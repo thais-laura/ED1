@@ -1,0 +1,132 @@
+Trabalho 1 de Estrutura de Dados 1
+Editor de textos
+Data de início: 10/09/2023
+
+####### se a pessoa remover a primeira (depois de li), o cursor deve ir pra proxima palavra
+####### tomar cuidado para nao pegar espaços ou \n na string palavra
+####### usar callocccc
+
+>>Especificações
+Editor orientado a palavras (strings)
+Conceito de cursor sobre a palavra atual
+Tamanho fixo de no máximo 10 caracteres
+Sem acentos, ASCII regular
+O cursor sempre aponta para a última palavra inserida
+
+>>Comandos do Editor
+I <palavra>
+	insere no inicio da lista
+F <palavra>
+	insere no final da lista
+A <palavra>
+	insere antes do cursor
+D <palavra>
+	insere depois do cursor
+P <palavra>
+	procura palavra (inicio ou a partir do cursor)
+R atual
+	remove a palavra do cursor e este vai para a palavra anterior
+G inicio
+	vai para o inicio da lista
+G fim
+	vai para o fim da lista
+G prox
+	vai para a proxima palavra
+G ant
+	vai para a palavra anterior
+L texto
+	lista o texto todo a partir do inicio
+L palavra
+	lista apenas a palavra atual do cursor
+X editor
+	termina edição e sai do programa
+
+
+Fluxograminha
+1. criar header e .c
+2. criar lista -- sempre aponta para o inicio da lista
+3. criar um ponteiro que significa o cursor do editor de textos
+4. inserir palavra
+	4.1. no início
+		*cria o elem no
+		*aloca dinamicamente
+		*verifica se alocou
+		*insere a palavra no dado de no
+		*o prox de li (ou seja, *li) vai para o prox de no
+		*li começa apontar para no
+	4.2. no fim
+		*tenho que ter dois elementos: aux e no
+		*aloca dinamicamente os dois
+		*com o auxiliar, tenho que achar o ultimo elemento (seu prox aponta para NULL)
+		*quando achar, passo o prox para no
+		*prox do aux será o endereço de no
+		*insere o dado em no
+	4.3. insere depois do cursor
+	>>> ver insere depois da lista
+		*o cursor (ponteiro) aponta para o endereco da palavra que ele tá
+		*logo, ele consegue acessar tbm o endereço do prox elemento
+		*o endereco desse prox deve ser o prox do novo elemento
+		*o elem atual deve apontar para o novo elemento
+		*ou seja... cria no e aloca
+		*aux = (*cursor) -- aponta para o elemento atual
+		*no->prox = aux->prox ###
+		*aux->prox = &no
+		*no->dado = deve ser inserido
+		retorna endereco de no para o cursor
+	4.4. insere antes do cursor
+	>>> ver insere antes da lista
+		*aqui, acho que temos q comparar os prox dos elementos com o endereço apontado pelo cursor!
+		*quando achar o aux->prox: já o substitui com o endereco no novo elem
+		*novo elem recebe dado e o endereco apontado pelo cursor
+		retorna...
+	4.5. passar o endereço de no (RETURN) para o cursor!!!
+	extra: fazer essa funcao e verificar se já consegue imprimir na tela a palavra inserida por meio do cursor
+5. procurar
+	5.1. a partir do cursor 
+		*encontra o elemento da lista apontado
+		*cria e aloca um aux
+		*a partir daí, verifica sempre se o dado bate (strcmp) == 0
+		*e vai andando normalmente ate encontrar a palavra
+		5.1.1. se encontrar -- retornar endereco para cursor
+			   se não encontrar, o cursor nao muda
+	5.2. desde o inicio
+		chama funcao de ir para o inicio e depois procurar palavra
+6. remover
+	tenho que remendar a lista!
+	cursor tem q ir para a palavra anterior
+	de li até o elem->prox ser igual ao conteudo de cursor (endereco da palavra atual)
+	guardar o endereço desse elemento anterior no cursor (dps)
+	atual->prox tem q ser jogado para o anterior prox
+7. GO
+	7.1. inicio
+		cursor = *li (retornando);
+	7.2. fim
+		até encontrar null e retorna o endereço do elem
+	7.3. depois
+		cursor = (*cursor)->prox
+	7.4. antes
+		li até o elem->prox = (*cursor)
+		cursor = &elem (anterior) == retornar!
+8. listar
+	8.1. desde o inicio
+		>>> imprime_lista
+		de li até encontrar null
+		printf elem->dado
+		no = no->prox;
+	8.2. a partir do cursor
+		encontra o endereco do elemento e vai andando até null
+9. terminar
+	9.1. free toda a lista e encerra o programa
+
+Observações:
+- li sempre aponta para o inicio da lista 
+- ultimo elemento aponta para NULL
+- que tal criar uma função que retorne o endereço para o cursor? n sei se tem como
+
+
+MAIN
+fgets comando - no maximo 9 letras
+L palavra
+fgets(comando, 9, stdin);
+fgets(palavra, 10, stdin);
+fgets palavra - no maximo 10 letras
