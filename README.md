@@ -19,7 +19,7 @@ No segundo trabalho, foi desenvolvida uma aplicação inspirada no universo fict
 No terceiro trabalho, uma continuação do contexto do trabalho anterior, foram utilizadas árvores binárias balanceadas (ABB), como AVL e Rubro-Negra, para otimizar as operações de busca e inserção na base de dados de indivíduos monitorados pelo governo ficcional. Veja mais detalhes aqui.
 
 ## Listas
-### Listas Simples, Jump Node, Imaginarios, GPS, Cubo, Correlacao
+### Ponto, Jump Node, Imaginarios, GPS, Cubo, Correlacao
 Todas as listas foram feitas para treinar as estruturas de dados estudadas na disciplina. Foram provas/trabalhos de anos anteriores, disponibilizadas no site do próprio docente: http://www.icmc.usp.br/~fosorio/
 
 #### Discente: Thaís Laura Anício Andrade
